@@ -3,11 +3,13 @@ import {
   Card,
   CardActions,
   CardContent,
+  CardHeader,
   IconButton,
   Typography,
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Favorite } from "@mui/icons-material";
+import { Link, useNavigate} from "react-router-dom";
 
 export const Post = ({
   post,
@@ -16,6 +18,9 @@ export const Post = ({
   onTopicSelect,
   topicFilter,
 }) => {
+
+  const navigate = useNavigate()
+
   return (
     <Card
       variant="outlined"
@@ -26,6 +31,7 @@ export const Post = ({
         flexDirection: "column",
       }}
     >
+      <CardHeader title={<Link to={`/${post.id}`} style={{textDecoration: "none", color: "inherit"}}>{post.title}</Link>}/>
       <CardContent
         sx={{
           flexGrow: 1,

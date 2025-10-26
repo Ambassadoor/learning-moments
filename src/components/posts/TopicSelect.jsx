@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { getAllTopics } from "../../services/postService.js"
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
+import "./TopicSelect.css"
 
-export const TopicSelect = ({setTopic, topic}) => {
+export const TopicSelect = ({topic, setTopic}) => {
     const [topics, setTopics] = useState([])
 
     useEffect(() => {
@@ -16,6 +17,7 @@ export const TopicSelect = ({setTopic, topic}) => {
                     labelId="topic-select-label"
                     id="topic-select"
                     label="Topics"
+                    className="topic-select-container"
                     onChange={(e) => {
                         const selectedValue = e.target.value;
                         if (selectedValue === "") {
@@ -28,14 +30,25 @@ export const TopicSelect = ({setTopic, topic}) => {
                     autoWidth
                     displayEmpty
                     size="small"
-                    sx={{ minWidth: 120 }}
-                    variant="filled"
+                    variant="outlined"
+                    MenuProps={{
+                        PaperProps: {
+                            style: {
+                                maxHeight: 300,
+                            }
+                        }
+                    }}
                 >
-                    <MenuItem value="">
+                    <MenuItem value="" className="topic-menu-item">
                         <em>All Topics</em>
                     </MenuItem>
                     {topics?.map(t => (
-                        <MenuItem key={t.id} value={t} selected={t.id === topic?.id}>
+                        <MenuItem 
+                            key={t.id} 
+                            value={t} 
+                            selected={t.id === topic?.id}
+                            className="topic-menu-item"
+                        >
                             {t.name}
                         </MenuItem>
                     ))}

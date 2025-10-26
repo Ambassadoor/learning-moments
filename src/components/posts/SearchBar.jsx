@@ -1,6 +1,7 @@
 import { Search } from "@mui/icons-material";
 import { InputAdornment, TextField } from "@mui/material";
 import { useState, useRef} from "react";
+import "./SearchBar.css";
 
 export const SearchBar = ({ setSearchTerm }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -20,13 +21,16 @@ export const SearchBar = ({ setSearchTerm }) => {
         inputRef={inputRef}
         size="medium"
         placeholder={isFocused ? "Search" : ""}
+        className={`search-bar-container search-bar-desktop ${
+          isFocused ? 'search-bar-expanded' : 'search-bar-collapsed'
+        }`}
         slotProps={{
           input: {
             endAdornment: (
               <InputAdornment position="end">
                 <Search 
                   onClick={handleIconClick}
-                  sx={{ cursor: 'pointer' }}
+                  className="search-icon"
                 />
               </InputAdornment>
             ),
@@ -37,13 +41,6 @@ export const SearchBar = ({ setSearchTerm }) => {
         }}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        sx={{
-            width: isFocused ? { xs: 250, sm: 350 } : { xs: 50, sm: 75 },
-            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-            '&:focus-within': {
-            transform: 'scale(1.02)'
-            }
-        }}
       ></TextField>
     </>
   );

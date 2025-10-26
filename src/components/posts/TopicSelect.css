@@ -1,0 +1,73 @@
+/* TopicSelect container */
+.topic-select-container {
+  min-width: 120px;
+}
+
+/* Material-UI Select overrides for navbar styling */
+.topic-select-container .MuiSelect-select {
+  color: white;
+  padding: 8px 32px 8px 14px;
+}
+
+/* Select input styling for outlined variant */
+.topic-select-container .MuiOutlinedInput-root {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Outline border styling */
+.topic-select-container .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.topic-select-container .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.topic-select-container .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: white;
+  border-width: 2px;
+}
+
+.topic-select-container .MuiOutlinedInput-root:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Dropdown arrow icon */
+.topic-select-container .MuiSelect-icon {
+  color: white;
+}
+
+/* Selected value text */
+.topic-select-container .MuiSelect-select {
+  transition: all 0.2s ease;
+}
+
+/* Focus and hover states */
+.topic-select-container .MuiOutlinedInput-root.Mui-focused {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Menu item styling (for dropdown) */
+.topic-menu-item {
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+.topic-menu-item:hover {
+  background-color: rgba(25, 118, 210, 0.1);
+}
+
+.topic-menu-item.Mui-selected {
+  background-color: rgba(25, 118, 210, 0.2);
+}
+
+.topic-menu-item.Mui-selected:hover {
+  background-color: rgba(25, 118, 210, 0.3);
+}
+
+/* Emphasized text for "All Topics" */
+.topic-menu-item em {
+  font-style: italic;
+  color: #666;
+}

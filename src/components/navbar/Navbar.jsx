@@ -1,38 +1,61 @@
+import { Link } from "react-router-dom";
 import { getAllPosts } from "../../services/postService.js";
 import { AllPosts } from "../posts/AllPosts.jsx";
 import { SearchBar } from "../posts/SearchBar.jsx";
 import { TopicSelect } from "../posts/TopicSelect.jsx";
 import { LoginOutButton } from "../users/LoginOutButton.jsx";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Navbar.css";
 
-export const Navbar = () => {
-  const [currentUser, setCurrentUser] = useState({});
-  const [allPosts, setAllPosts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentTopic, setCurrentTopic] = useState({});
+export const Navbar = ({setSearchTerm, topic, setTopic}) => {
 
-  useEffect(() => {
-    getAllPosts().then((res) => setAllPosts(res));
-  }, []);
+  const navigate = useNavigate();
 
 
   return (
-    <><div style={{display: "flex", flexDirection: "row", gap: "2rem", justifyContent: "flex-end", padding: "1rem"}}>
-        <LoginOutButton
-        currentUser={currentUser}
-        setCurrentUser={setCurrentUser}
-        ></LoginOutButton>
-        <SearchBar setSearchTerm={setSearchTerm}></SearchBar>
-        <TopicSelect setTopic={setCurrentTopic} topic={currentTopic}></TopicSelect>
-    </div>
-      <AllPosts
-        currentUser={currentUser}
-        posts={allPosts}
-        setPosts={setAllPosts}
-        searchTerm={searchTerm}
-        topic={currentTopic}
-        setTopic={setCurrentTopic}
-      ></AllPosts>
-    </>
+    <nav className="navbar">
+      <div className="navbar-container">
+        {/* Logo/Brand */}
+        <div className="navbar-brand">
+          Learning Moments
+        </div>
+
+        {/* Navigation Links */}
+        <ul className="navbar-nav">
+          <li>
+            <Link to="/" className="nav-link">
+              All Posts
+            </Link>
+          </li>
+          <li>
+            <TopicSelect topic={topic} setTopic={setTopic}/>
+          </li>
+          <li>
+            <SearchBar setSearchTerm={setSearchTerm}/>
+          </li>
+          {localStorage.getItem("learning_user") ? (
+            <li>
+              <Link
+                to=""
+                className="nav-link"
+                onClick={() => {
+                  localStorage.removeItem("learning_user")
+                  navigate("/login", { replace: true})
+                }}
+              >
+                Logout
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+            </li>
+          )}
+        </ul>
+      </div>
+    </nav>
   );
 };

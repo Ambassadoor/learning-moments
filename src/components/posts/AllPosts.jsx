@@ -1,37 +1,10 @@
 import { useEffect, useState } from "react";
-import { toggleLike } from "../../services/postService.js";
 import { Post } from "./Post.jsx";
 
-export const AllPosts = ({
-  currentUser,
-  posts,
-  setPosts,
-  searchTerm,
-  topic,
-  setTopic,
-}) => {
+export const AllPosts = ({posts, currentUser, handleLikeToggle, searchTerm, topic, setTopic}) => {
   const [topicFilter, setTopicFilter] = useState(false);
   const [searchFilter, setSearchFilter] = useState(false);
 
-  /**
-   * Updated allPosts to add or delete a likedPost object
-   * @param {*} post The current post object
-   * @param {*} currentUser The current user object
-   */
-  const handleLikeToggle = async (post, currentUser) => {
-    const result = await toggleLike(post, currentUser);
-
-    const del = post.likedPosts.find((l) => l.id === result.id) !== undefined;
-    const updatedLikes = del
-      ? post.likedPosts.filter((l) => l.id !== result.id)
-      : [...post.likedPosts, result];
-
-    setPosts((prev) =>
-      prev.map((p) =>
-        p.id === post.id ? { ...p, likedPosts: updatedLikes } : p,
-      ),
-    );
-  };
 
 /**
  * Sets/resets topic

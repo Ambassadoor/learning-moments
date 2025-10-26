@@ -1,0 +1,113 @@
+/* SearchBar container */
+.search-bar-container {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 40px;
+}
+
+/* Collapsed state */
+.search-bar-collapsed {
+  width: 40px;
+}
+
+.search-bar-collapsed.search-bar-desktop {
+  width: 48px;
+}
+
+/* Ensure collapsed state still shows the field outline */
+.search-bar-collapsed .MuiOutlinedInput-root {
+  padding-left: 0px;
+}
+
+/* Expanded state */
+.search-bar-expanded {
+  width: 250px;
+}
+
+.search-bar-expanded.search-bar-desktop {
+  width: 300px;
+}
+
+/* Material-UI TextField overrides */
+.search-bar-container .MuiOutlinedInput-root {
+  color: white;
+}
+
+.search-bar-container .MuiOutlinedInput-root fieldset {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.search-bar-container .MuiOutlinedInput-root:hover fieldset {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.search-bar-container .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: white;
+}
+
+/* Input text styling */
+.search-bar-container .MuiInputBase-input {
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.search-bar-container .MuiInputBase-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+}
+
+/* Input text visibility states - Target the actual input element */
+.search-bar-collapsed .MuiInputBase-input {
+  opacity: 0;
+  width: 0;
+  padding: 8.5px 0px;
+}
+
+.search-bar-expanded .MuiInputBase-input {
+  opacity: 1;
+  width: auto;
+  padding: 8.5px 14px;
+  flex-grow: 1;
+}
+
+/* Input adornment (icon container) - Keep icon at right edge */
+.search-bar-container .MuiInputAdornment-root {
+  color: white;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Ensure the input container uses flex layout */
+.search-bar-container .MuiOutlinedInput-root {
+  display: flex;
+  align-items: center;
+}
+
+/* Search icon styling */
+.search-icon {
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.search-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 4px;
+  margin: -4px;
+}
+
+/* Focus effects */
+.search-bar-container:focus-within {
+  transform: scale(1.02);
+}
+
+/* Media queries for responsive design */
+@media (min-width: 600px) {
+  .search-bar-collapsed.search-bar-desktop {
+    width: 48px;
+  }
+  
+  .search-bar-expanded.search-bar-desktop {
+    width: 300px;
+  }
+}
