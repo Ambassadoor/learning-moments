@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { getAllPosts } from "../services/postService.js"
 import { PostDetails } from "../components/posts/PostDetails.jsx"
 import { toggleLike } from "../services/postService.js"
+import { NewPost } from "../components/posts/NewPost.jsx"
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
@@ -17,8 +18,12 @@ export const ApplicationViews = () => {
         const learningUserObject = JSON.parse(localLearningUser)
         setCurrentUser(learningUserObject)
 
-        getAllPosts().then(res => setPosts(res))
+        getAndSetPosts()
     }, [])
+
+    const getAndSetPosts = () => {
+        getAllPosts().then(res => setPosts(res))
+    }
     
 
   /**
@@ -52,6 +57,7 @@ export const ApplicationViews = () => {
             }>
                 <Route index element={<AllPosts posts={posts} currentUser={currentUser} handleLikeToggle={handleLikeToggle} searchTerm={searchTerm} topic={topic} setTopic={setTopic}/>}/>
                 <Route path=":id" element={<PostDetails currentUser={currentUser} handleLikeToggle={handleLikeToggle} posts={posts} setTopic={setTopic}/>}/>
+                <Route path="new_post" element={<NewPost currentUser={currentUser} refresh={getAndSetPosts}/>}/>
             </Route>
         </Routes>
     )

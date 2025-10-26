@@ -29,3 +29,19 @@ export const getAllTopics = () => {
 export const getPostById = (id) => {
     return fetch(`http://localhost:8088/posts/${id}?_expand=user&_expand=topic&_embed=likedPosts`).then(res => res.json())
 }
+
+export const createNewPost = (post, currentUser) => {
+    return fetch("http://localhost:8088/posts", {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        }, 
+        body: JSON.stringify({
+            title: post.title,
+            body: post.body,
+            date: new Date(),
+            userId: parseInt(currentUser.id),
+            topicId: parseInt(post.topic.id)
+        })
+    }).then(res => res.json())
+}
