@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getAllTopics } from "../../services/postService.js"
-import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
+import { MenuItem, Select } from "@mui/material"
 import "./TopicSelect.css"
 
 export const TopicSelect = ({topic, setTopic}) => {

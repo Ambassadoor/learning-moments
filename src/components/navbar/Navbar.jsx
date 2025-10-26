@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
-import { getAllPosts } from "../../services/postService.js";
-import { AllPosts } from "../posts/AllPosts.jsx";
 import { SearchBar } from "../posts/SearchBar.jsx";
 import { TopicSelect } from "../posts/TopicSelect.jsx";
-import { LoginOutButton } from "../users/LoginOutButton.jsx";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
