@@ -118,7 +118,7 @@ export const NewPost = ({ currentUser, refresh }) => {
           onClick={async () => {
             await createNewPost(post, currentUser);
             await refresh();
-            navigate("/");
+            navigate("/my_posts");
           }}
         >
           Create Post
