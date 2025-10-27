@@ -6,15 +6,15 @@ import { getUserByEmail } from "../../services/userService.js";
 export const LoginOutButton = ({ currentUser, setCurrentUser }) => {
   const [loggingIn, setLoggingIn] = useState(false);
   const [email, setEmail] = useState("");
-  const inputRef = useRef(null)
+  const inputRef = useRef(null);
 
   const handleInputChange = (e) => {
     setEmail(e.target.value);
   };
 
   const handleIconClick = () => {
-  inputRef.current?.focus()
-  handleLogIn()
+    inputRef.current?.focus();
+    handleLogIn();
   };
 
   /**
@@ -63,21 +63,18 @@ export const LoginOutButton = ({ currentUser, setCurrentUser }) => {
             placeholder="Email"
             size="medium"
             onChange={(e) => handleInputChange(e)}
-
             slotProps={{
-                input: {
-                    endAdornment: (
-                                    <InputAdornment position="end">
-                <IconButton onClick={() => handleIconClick()}>
-                    <AccountBox/>
-                </IconButton>
-            </InputAdornment>
-                    )
-                }
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={() => handleIconClick()}>
+                      <AccountBox />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              },
             }}
-          >
-
-          </TextField>
+          ></TextField>
         </>
       ) : (
         ""

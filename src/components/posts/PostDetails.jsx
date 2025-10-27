@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-    Box,
+  Box,
   Button,
   Card,
   CardActions,
@@ -13,13 +13,18 @@ import {
 import { Favorite } from "@mui/icons-material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-export const PostDetails = ({ currentUser, handleLikeToggle, posts, setTopic }) => {
+export const PostDetails = ({
+  currentUser,
+  handleLikeToggle,
+  posts,
+  setTopic,
+}) => {
   const [post, setPost] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    setPost(posts?.find(p => p.id === parseInt(id)) || {})
+    setPost(posts?.find((p) => p.id === parseInt(id)) || {});
   }, [posts]);
 
   return (
@@ -48,7 +53,7 @@ export const PostDetails = ({ currentUser, handleLikeToggle, posts, setTopic }) 
           <CardHeader
             title={post.title}
             subheader={
-              <Box sx={{ display: "flex"}}>
+              <Box sx={{ display: "flex" }}>
                 <Typography>{post.user.name}</Typography>
                 <Typography sx={{ marginLeft: "auto" }}>
                   {new Date(post.date).toLocaleDateString("en-us", {
@@ -74,52 +79,52 @@ export const PostDetails = ({ currentUser, handleLikeToggle, posts, setTopic }) 
                 p: 0,
                 display: "flex",
                 width: "100%",
-                justifyContent: "space-between"
+                justifyContent: "space-between",
               }}
             >
-            <Box sx={{display: "flex", gap: 1}}>
-              <Button
-                variant="outlined"
-                sx={{
-                  backgroundColor: "transparent",
-                  color: "#1976d2",
-                  borderColor: "#1976d2",
-                  "&:hover": {
-                    backgroundColor: "#f5f5f5",
-                  },
-                }}
-                onClick={() => {
-                    setTopic(post.topic)
-                    navigate("/")
-                }}
-              >
-                {post.topic?.name}
-              </Button>
-              <IconButton
-                aria-label="add to favorites"
-                disabled={currentUser.id === undefined}
-                onClick={() => {
-                  handleLikeToggle(post, currentUser);
-                }}
-              >
-                {post.likedPosts.length ? (
-                  <Favorite
-                    sx={
-                      post.likedPosts.some(
-                        (like) => like.userId === currentUser.id,
-                      )
-                        ? { color: "#EA33F7" }
-                        : {}
-                    }
-                  />
-                ) : (
-                  <FavoriteBorderIcon />
-                )}
-                <div>
-                  {post.likedPosts.length ? post.likedPosts.length : ""}
-                </div>
-              </IconButton>
-            </Box>
+              <Box sx={{ display: "flex", gap: 1 }}>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    backgroundColor: "transparent",
+                    color: "#1976d2",
+                    borderColor: "#1976d2",
+                    "&:hover": {
+                      backgroundColor: "#f5f5f5",
+                    },
+                  }}
+                  onClick={() => {
+                    setTopic(post.topic);
+                    navigate("/");
+                  }}
+                >
+                  {post.topic?.name}
+                </Button>
+                <IconButton
+                  aria-label="add to favorites"
+                  disabled={currentUser.id === undefined}
+                  onClick={() => {
+                    handleLikeToggle(post, currentUser);
+                  }}
+                >
+                  {post.likedPosts.length ? (
+                    <Favorite
+                      sx={
+                        post.likedPosts.some(
+                          (like) => like.userId === currentUser.id,
+                        )
+                          ? { color: "#EA33F7" }
+                          : {}
+                      }
+                    />
+                  ) : (
+                    <FavoriteBorderIcon />
+                  )}
+                  <div>
+                    {post.likedPosts.length ? post.likedPosts.length : ""}
+                  </div>
+                </IconButton>
+              </Box>
               {currentUser.id === post.userId ? <Button>Edit</Button> : ""}
             </CardActions>
           </CardContent>

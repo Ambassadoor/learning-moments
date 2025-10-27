@@ -4,18 +4,14 @@ import { TopicSelect } from "../posts/TopicSelect.jsx";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-export const Navbar = ({setSearchTerm, topic, setTopic}) => {
-
+export const Navbar = ({ setSearchTerm, topic, setTopic }) => {
   const navigate = useNavigate();
-
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
         {/* Logo/Brand */}
-        <div className="navbar-brand">
-          Learning Moments
-        </div>
+        <div className="navbar-brand">Learning Moments</div>
 
         {/* Navigation Links */}
         <ul className="navbar-nav">
@@ -25,15 +21,20 @@ export const Navbar = ({setSearchTerm, topic, setTopic}) => {
             </Link>
           </li>
           <li>
+            <Link to="/my_posts" className="nav-link">
+              My Posts
+            </Link>
+          </li>
+          <li>
             <Link to="/new_post" className="nav-link">
               New Post
             </Link>
           </li>
           <li>
-            <TopicSelect topic={topic} setTopic={setTopic}/>
+            <TopicSelect topic={topic} setTopic={setTopic} />
           </li>
           <li>
-            <SearchBar setSearchTerm={setSearchTerm}/>
+            <SearchBar setSearchTerm={setSearchTerm} />
           </li>
           {localStorage.getItem("learning_user") ? (
             <li>
@@ -41,8 +42,8 @@ export const Navbar = ({setSearchTerm, topic, setTopic}) => {
                 to=""
                 className="nav-link"
                 onClick={() => {
-                  localStorage.removeItem("learning_user")
-                  navigate("/login", { replace: true})
+                  localStorage.removeItem("learning_user");
+                  navigate("/login", { replace: true });
                 }}
               >
                 Logout

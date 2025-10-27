@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import { Post } from "./Post.jsx";
 
-export const AllPosts = ({posts, currentUser, handleLikeToggle, searchTerm, topic, setTopic}) => {
+export const AllPosts = ({
+  posts,
+  currentUser,
+  handleLikeToggle,
+  searchTerm,
+  topic,
+  setTopic,
+}) => {
   const [topicFilter, setTopicFilter] = useState(false);
   const [searchFilter, setSearchFilter] = useState(false);
 
-
-/**
- * Sets/resets topic
- * @param {*} t Selected topic
- */
+  /**
+   * Sets/resets topic
+   * @param {*} t Selected topic
+   */
   const handleSelectTopic = (t) => {
     if (topic.id !== t.id) {
       setTopic(t);

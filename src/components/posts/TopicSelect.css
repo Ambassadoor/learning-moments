@@ -20,11 +20,15 @@
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-.topic-select-container .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+.topic-select-container
+  .MuiOutlinedInput-root:hover
+  .MuiOutlinedInput-notchedOutline {
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-.topic-select-container .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+.topic-select-container
+  .MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
   border-color: white;
   border-width: 2px;
 }
