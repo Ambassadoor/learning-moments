@@ -25,6 +25,10 @@ export const Navbar = ({ setSearchTerm, topic, setTopic }) => {
               My Posts
             </Link>
           </li>
+            <li>
+              <Link to="my_favorites" className="nav-link">My Favorites</Link>
+            </li>
+
           <li>
             <Link to="/new_post" className="nav-link">
               New Post

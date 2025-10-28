@@ -8,6 +8,7 @@ import { toggleLike } from "../services/postService.js";
 import { NewPost } from "../components/posts/NewPost.jsx";
 import { MyPosts } from "../components/posts/MyPosts.jsx";
 import { EditPost } from "../components/posts/EditPost.jsx";
+import { FavoritePosts } from "../components/posts/FavoritePosts.jsx";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -99,6 +100,9 @@ export const ApplicationViews = () => {
         <Route
           path="edit_post/:id"
           element={<EditPost posts={posts}/>}/>
+        <Route
+          path="my_favorites"
+          element={<FavoritePosts posts={posts} currentUser={currentUser} getAndSetPosts={getAndSetPosts} handleLikeToggle={handleLikeToggle}/>}/>
       </Route>
     </Routes>
   );
