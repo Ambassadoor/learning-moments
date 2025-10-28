@@ -7,6 +7,7 @@ import { PostDetails } from "../components/posts/PostDetails.jsx";
 import { toggleLike } from "../services/postService.js";
 import { NewPost } from "../components/posts/NewPost.jsx";
 import { MyPosts } from "../components/posts/MyPosts.jsx";
+import { EditPost } from "../components/posts/EditPost.jsx";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -95,6 +96,9 @@ export const ApplicationViews = () => {
           path="my_posts"
           element={<MyPosts posts={posts} currentUser={currentUser} getAndSetPosts={getAndSetPosts} />}
         />
+        <Route
+          path="edit_post/:id"
+          element={<EditPost posts={posts}/>}/>
       </Route>
     </Routes>
   );

@@ -125,7 +125,9 @@ export const PostDetails = ({
                   </div>
                 </IconButton>
               </Box>
-              {currentUser.id === post.userId ? <Button>Edit</Button> : ""}
+              {currentUser.id === post.userId ? <Button onClick={() => {
+                navigate(`/edit_post/${post.id}`)
+              }}>Edit</Button> : ""}
             </CardActions>
           </CardContent>
         </Card>
