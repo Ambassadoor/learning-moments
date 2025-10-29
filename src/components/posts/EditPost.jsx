@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getAllTopics, getPostById, editPost } from "../../services/postService.js"
 
-export const EditPost = ({posts}) => {
+export const EditPost = ({posts, getAndSetPosts}) => {
     const [post, setPost] = useState({})
     const [topics, setTopics] = useState([])
 
@@ -21,6 +21,7 @@ export const EditPost = ({posts}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await editPost(post)
+        await getAndSetPosts()
         navigate("/my_posts")
     }
 

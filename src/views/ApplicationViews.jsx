@@ -102,7 +102,7 @@ export const ApplicationViews = () => {
         />
         <Route
           path="edit_post/:id"
-          element={<EditPost posts={posts}/>}/>
+          element={<EditPost posts={posts} getAndSetPosts={getAndSetPosts}/>}/>
         <Route
           path="my_favorites"
           element={<FavoritePosts posts={posts} currentUser={currentUser} getAndSetPosts={getAndSetPosts} handleLikeToggle={handleLikeToggle}/>}/>
