@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { getUserById, updateUser } from "../../services/userService.js"
 import { useNavigate, useParams } from "react-router-dom"
 
-export const EditProfile = ({currentUser}) => {
+export const EditProfile = ({currentUser, getAndSetPosts}) => {
     const [user, setUser] = useState({})
     const navigate = useNavigate()
 
@@ -16,6 +16,7 @@ export const EditProfile = ({currentUser}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await updateUser(currentUser.id, {name: user.name, cohort: user.cohort})
+        await getAndSetPosts()
         navigate(`/profile/${currentUser.id}`)
     }
 

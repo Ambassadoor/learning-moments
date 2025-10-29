@@ -112,7 +112,7 @@ export const ApplicationViews = () => {
         />
         <Route
           path="edit_profile/:id"
-          element={<EditProfile currentUser={currentUser}/>}
+          element={<EditProfile currentUser={currentUser} getAndSetPosts={getAndSetPosts}/>}
         />
       </Route>
 
