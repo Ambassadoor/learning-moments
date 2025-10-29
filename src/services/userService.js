@@ -35,3 +35,13 @@ export const createUser = (user) => {
 export const getUserById = (id) => {
   return fetch(`http://localhost:8088/users/${id}?_embed=posts`).then(res => res.json())
 }
+
+export const updateUser = (id, user) => {
+  return fetch(`http://localhost:8088/users/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type" : "application/json"
+    },
+    body: JSON.stringify(user)
+  })
+}

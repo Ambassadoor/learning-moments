@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getUserById } from "../../services/userService.js"
 import { Box, Button, Card, CardContent, CardHeader, Typography } from "@mui/material"
 
 export const Profile = ({currentUser}) => {
     const [profile, setProfile] = useState({})
     const {id} = useParams()
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         getUserById(parseInt(id)).then(res => setProfile(res))
@@ -37,7 +39,10 @@ export const Profile = ({currentUser}) => {
                         <>
                             {profile.name}
                         </>
-                        {profile.id === currentUser.id && <Button sx={{marginLeft: "auto"}}>Edit</Button>}
+                        {profile.id === currentUser.id && <Button
+                         sx={{marginLeft: "auto"}}
+                         onClick={() => navigate(`/edit_profile/${currentUser.id}`)}
+                         >Edit</Button>}
 
                     </Box>
                     }/>

@@ -10,6 +10,7 @@ import { MyPosts } from "../components/posts/MyPosts.jsx";
 import { EditPost } from "../components/posts/EditPost.jsx";
 import { FavoritePosts } from "../components/posts/FavoritePosts.jsx";
 import { Profile } from "../components/users/Profile.jsx";
+import { EditProfile } from "../components/users/EditProfile.jsx";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -108,6 +109,10 @@ export const ApplicationViews = () => {
         <Route
           path="profile/:id"
           element={<Profile currentUser={currentUser} />}
+        />
+        <Route
+          path="edit_profile/:id"
+          element={<EditProfile currentUser={currentUser}/>}
         />
       </Route>
 
