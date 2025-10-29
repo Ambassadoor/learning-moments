@@ -3,8 +3,9 @@ import { SearchBar } from "../posts/SearchBar.jsx";
 import { TopicSelect } from "../posts/TopicSelect.jsx";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import { AccountCircle } from "@mui/icons-material";
 
-export const Navbar = ({ setSearchTerm, topic, setTopic }) => {
+export const Navbar = ({ setSearchTerm, topic, setTopic, currentUser }) => {
   const navigate = useNavigate();
 
   return (
@@ -60,6 +61,11 @@ export const Navbar = ({ setSearchTerm, topic, setTopic }) => {
               </Link>
             </li>
           )}
+          <li>
+            <Link to={`/profile/${currentUser.id}`} className="nav-link">
+              <AccountCircle/>
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

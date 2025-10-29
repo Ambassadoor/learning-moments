@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   Box,
   Button,
@@ -54,7 +54,7 @@ export const PostDetails = ({
             title={post.title}
             subheader={
               <Box sx={{ display: "flex" }}>
-                <Typography>{post.user.name}</Typography>
+                <Link to={`/profile/${post.userId}`} style={{textDecoration: "none", color: "inherit"}}>{post.user.name}</Link>
                 <Typography sx={{ marginLeft: "auto" }}>
                   {new Date(post.date).toLocaleDateString("en-us", {
                     year: "numeric",

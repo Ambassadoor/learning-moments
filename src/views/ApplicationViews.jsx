@@ -9,6 +9,7 @@ import { NewPost } from "../components/posts/NewPost.jsx";
 import { MyPosts } from "../components/posts/MyPosts.jsx";
 import { EditPost } from "../components/posts/EditPost.jsx";
 import { FavoritePosts } from "../components/posts/FavoritePosts.jsx";
+import { Profile } from "../components/users/Profile.jsx";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -58,6 +59,7 @@ export const ApplicationViews = () => {
               setSearchTerm={setSearchTerm}
               topic={topic}
               setTopic={setTopic}
+              currentUser={currentUser}
             />
             <Outlet />
           </>
@@ -103,7 +105,12 @@ export const ApplicationViews = () => {
         <Route
           path="my_favorites"
           element={<FavoritePosts posts={posts} currentUser={currentUser} getAndSetPosts={getAndSetPosts} handleLikeToggle={handleLikeToggle}/>}/>
+        <Route
+          path="profile/:id"
+          element={<Profile currentUser={currentUser} />}
+        />
       </Route>
+
     </Routes>
   );
 };
