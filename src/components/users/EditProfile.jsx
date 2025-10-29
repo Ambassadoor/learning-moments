@@ -1,11 +1,13 @@
 import { Box, Button, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
 import { getUserById, updateUser } from "../../services/userService.js"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 export const EditProfile = ({currentUser}) => {
     const [user, setUser] = useState({})
     const navigate = useNavigate()
+
+    const {id} = useParams()
 
     useEffect(() => {
         getUserById(currentUser.id).then(res => setUser(res))
@@ -19,6 +21,7 @@ export const EditProfile = ({currentUser}) => {
 
 
     return (
+        parseInt(id) === currentUser.id &&
         <Box
             component="form"
             sx={{
